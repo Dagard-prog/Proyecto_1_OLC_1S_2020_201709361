@@ -16,7 +16,7 @@ namespace Proyecto_1_OLC_1S_2020_201709361
         {
             Application.EnableVisualStyles();
             Application.SetCompatibleTextRenderingDefault(false);
-            Application.Run(new Form1());
+            Application.Run(new Home());
         }
     }
 }
