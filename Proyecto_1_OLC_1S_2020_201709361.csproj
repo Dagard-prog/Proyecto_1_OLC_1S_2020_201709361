@@ -54,6 +54,7 @@
     <Compile Include="Analizadores\Analizador.cs" />
     <Compile Include="Analizadores\Tipo_Signo.cs" />
     <Compile Include="Analizadores\Tipo_Texto.cs" />
+    <Compile Include="Funciones\TransformacionER.cs" />
     <Compile Include="Funciones\Recoleccion_Tokens.cs" />
     <Compile Include="Home.cs">
       <SubType>Form</SubType>

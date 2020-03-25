@@ -26,6 +26,9 @@ namespace Proyecto_1_OLC_1S_2020_201709361.Analizadores
         string Punto = ".";
         string Cero_o_Mas = "*";
         string Uno_o_Mas = "+";
+        string Or = "|";
+        string Guion = "~";
+        string Al_menos = "?";
 
 
 
@@ -55,15 +58,25 @@ namespace Proyecto_1_OLC_1S_2020_201709361.Analizadores
                 tipo = "Comentario";
             }
 
+            else if (a.Equals(Guion))
+            {
+                tipo = "Guion";
+            }
+
             else if (a.Equals(Flecha))
             {
                 tipo = "Signo de Asignación";
             }
 
 
-            else if (a.Equals(Punto_Coma) | a.Equals(Dos_Puntos))
+            else if (a.Equals(Punto_Coma) )
             {
-                tipo = "Punto y coma y dos puntos";
+                tipo = "Punto y coma";
+            }
+
+            else if (a.Equals(Dos_Puntos))
+            {
+                tipo = "Dos puntos";
             }
 
             else if (a.Equals(Doble_Porcentaje))
@@ -71,24 +84,34 @@ namespace Proyecto_1_OLC_1S_2020_201709361.Analizadores
                 tipo = "Doble Porcentaje";
             }
 
-            else if (a.Equals(Punto))
-            {
-                tipo = "Punto";
-            }
-
             else if (a.Equals(Coma))
             {
                 tipo = "Coma";
             }
-
+            //----------------------------------------------//
             else if (a.Equals(Cero_o_Mas))
             {
-                tipo = "Cero o más";
+                tipo = "Ceromas";
             }
 
             else if (a.Equals(Uno_o_Mas))
             {
-                tipo = "Uno o más";
+                tipo = "Unomas";
+            }
+
+            else if (a.Equals(Al_menos))
+            {
+                tipo = "Almenos";
+            }
+
+            else if (a.Equals(Or))
+            {
+                tipo = "Or";
+            }
+
+            else if (a.Equals(Punto))
+            {
+                tipo = "Concatenacion";
             }
 
 

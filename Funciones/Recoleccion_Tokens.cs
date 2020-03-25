@@ -157,6 +157,21 @@ namespace Proyecto_1_OLC_1S_2020_201709361.Funciones
 
                             }
 
+                            /*
+                            Numérico
+
+                            Recolecta todos los tokens números
+
+                            Case 5
+                            */
+                            else if (analizador.Numerico(a[j])) {
+
+                                token = token + Char.ToString(a[j]);
+                                estadoprincipal = 5;
+                                break;
+
+                            }
+
 
                             /*
                             signo de asignacion : "->"
@@ -178,6 +193,11 @@ namespace Proyecto_1_OLC_1S_2020_201709361.Funciones
                                 //se revisa si lo que viene es un conjunto o una expresión, esto se valida
 
                             }
+
+                            /*
+                            Inicio de comentario multilinea : "<!"
+                            Revisa si viene el signo comparando dos caracteres seguidos y si viene, empieza la unión del comentario multilinea, sino reinicia el proceso
+                            */
 
                             else if (analizador.menor_que(a[j]) && analizador.admiracion(a[j + 1]))
                             {
@@ -230,15 +250,11 @@ namespace Proyecto_1_OLC_1S_2020_201709361.Funciones
 
 
 
-                            /*
-                            Inicio de comentario multilinea : "<!"
-                            Revisa si viene el signo comparando dos caracteres seguidos y si viene, empieza la unión del comentario multilinea, sino reinicia el proceso
-                            */
+
 
                             break;
 
-                        //finalizador case 0
-
+                        //------------------------------------------------------------------------------------//
                         /*
                         Case 1
                         Este case une los comentarios de una linea
@@ -263,8 +279,9 @@ namespace Proyecto_1_OLC_1S_2020_201709361.Funciones
                                 j = j - 1;
 
                             }
-                            break;
+                        break;
 
+                        //------------------------------------------------------------------------------------//
                         /*
                         Case 2
                         Alfabeto del tipo L(L|D|-|_)*
@@ -298,8 +315,9 @@ namespace Proyecto_1_OLC_1S_2020_201709361.Funciones
 
 
                             //finalizador case 2
-                            break;
+                        break;
 
+                        //------------------------------------------------------------------------------------//
                         /*
                         Case 3
                         comillas
@@ -324,13 +342,13 @@ namespace Proyecto_1_OLC_1S_2020_201709361.Funciones
 
                             }
 
-                            break;
+                        break;
 
+                        //------------------------------------------------------------------------------------//
                         /*
                         Case 4
                         Comentario Multilinea
                         */
-
                         case 4:
 
                             if (a[j] == '!')
@@ -348,8 +366,8 @@ namespace Proyecto_1_OLC_1S_2020_201709361.Funciones
                                 }
                                 else
                                 {
-                                    Token guardar = new Token(token, f, c, tipo);
                                     tipo = "Comentario MultiLinea";
+                                    Token guardar = new Token(token, f, c, tipo);
                                     Tkns.Add(guardar);
                                 }
 
@@ -364,7 +382,31 @@ namespace Proyecto_1_OLC_1S_2020_201709361.Funciones
 
                             }
 
-                            break;
+                        break;
+                        //------------------------------------------------------------------------------------//
+                        /*
+                        Case 5
+                        Números
+                        */
+                        case 5:
+                            if (analizador.Numerico(a[j]))
+                            {
+                                token = token + a[j];
+                                estadoprincipal = 5;
+                            }
+                            else {
+                                tipo = "Número";
+                                Token guardar = new Token(token, f, c-1, tipo);
+                                Tkns.Add(guardar);
+                                j = j - 1;
+                                c = c - 1;
+                                token = "";
+                                estadoprincipal = 0;
+                                
+
+                            }
+
+                        break;
 
                     }
 
